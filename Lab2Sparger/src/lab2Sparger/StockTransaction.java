@@ -1,6 +1,8 @@
 package lab2Sparger;
 
-	import javax.swing.JOptionPane;
+	import java.text.DecimalFormat;
+
+import javax.swing.JOptionPane;
 	
 public class StockTransaction {
 		
@@ -25,7 +27,9 @@ public class StockTransaction {
 			       Gain = (sellingPrice * numShareSold) - payOut2,
 			       profitLoss = Gain - TotalPayout;
 			
-		JOptionPane.showMessageDialog(null, "You paid $" + purchasingPrice +" for the stock\n" 
+		DecimalFormat myFormat = new DecimalFormat("0.00");
+			
+		JOptionPane.showMessageDialog(null, "You paid $" + myFormat.format(purchasingPrice) +" for the stock\n" 
 										  + "You paid your broker commission of $" + payOut + " on the purchase\n" 
 				                          + "So, You paid a total of $" + TotalPayout + "\n" 
 										  + "You sold the stock for $" + sellingPrice + "\n"

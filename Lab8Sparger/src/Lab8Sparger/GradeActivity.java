@@ -3,14 +3,34 @@ package Lab8Sparger;
 
 public class GradeActivity {
 		
-		 double score; // Numeric Score
-		 String name, exam;
-		 char letterGrade;
+		 public double score; // Numeric Score
+		 public String name, exam;
+		 public char letterGrade;
 		 
-		private GradeActivity(){
+		protected GradeActivity(){
 			name = "";
 			exam = "";
 			score = 0.0;
+		}
+		
+		public void setName(String na)
+		{
+			name = na;
+		}
+		
+		public String getName()
+		{
+			return name;
+		}
+		
+		public void setScore(double sc)
+		{
+			score = sc;
+		}
+		
+		public double getScore()
+		{
+			return score;
 		}
 		
 		public void setExam(int e){
@@ -22,9 +42,9 @@ public class GradeActivity {
 				exam = "Final Essay Exam";
 			} 
 		
-		public double getExam()
+		public String getExam()
 		{
-			return Double.parseDouble(exam);
+			return exam;
 		}
 
 		/** 

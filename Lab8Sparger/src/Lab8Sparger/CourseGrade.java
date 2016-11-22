@@ -5,22 +5,34 @@ import javax.swing.JOptionPane;
 public class CourseGrade extends GradeActivity{
 
 	int numQuestions, numMissed;
-	double pointsEach, mScore, grammer, content, fScore;
+	double pointsEach, mScore, grammar, content, fScore;
 	
 	public CourseGrade(){
-		numQuestions = q;
-		numMissed = 0.0; 
+		super();
+		numQuestions = 0;
+		numMissed = 0; 
 		pointsEach = 0.0;
+		mScore = 0.0;
+		grammar = 0.0;
+		content = 0.0;
 		
 	}
 	public boolean checkSelect (int se){
 		if (se < 1 || se > 3)
-			return true; 
+			return false; 
 		else 
-		 return false; 
+		 return true; 
 	}
 	
-	public void setQuestions (){
+	public boolean checkName(String na){
+		if(na.length()<1 || na.length()>20 )
+			return false;
+		else 
+			return true;
+	}
+	
+	public void setQuestions (int q){
+		numQuestions = q;
 		numQuestions = Integer.parseInt(JOptionPane.showInputDialog("Enter the number of questions in the exam: "));
 	}
 	
@@ -46,13 +58,14 @@ public class CourseGrade extends GradeActivity{
 		return mScore;
 		}
 	
-	public void setGrammar(){
-		grammer = Double.parseDouble(JOptionPane.showInputDialog("Enter the Final Essay's Grammer Score:(<=70)"));
+	public void setGrammar(double g){
+		grammar =g;
+		grammar = Double.parseDouble(JOptionPane.showInputDialog("Enter the Final Essay's Grammer Score:(<=30)"));
 
 	}
 	
-	public double getGrammer(){
-		return grammer;
+	public double getGrammar(){
+		return grammar;
 	}
 		
 	public void setContent (double co){
@@ -65,9 +78,10 @@ public class CourseGrade extends GradeActivity{
 	}
 
 	public double getFScore(){
-		fScore = (grammer *.30)+ (content *.30);
-		return fScore;
+		score = (grammar *.30)+ (content *.70);
+		return score;
 	}
+	
 	
 }
 
