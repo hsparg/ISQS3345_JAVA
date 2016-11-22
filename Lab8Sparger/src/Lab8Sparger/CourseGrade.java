@@ -15,7 +15,7 @@ public class CourseGrade extends GradeActivity{
 		mScore = 0.0;
 		grammar = 0.0;
 		content = 0.0;
-		
+		//fscore = 0.0;
 	}
 	public boolean checkSelect (int se){
 		if (se < 1 || se > 3)

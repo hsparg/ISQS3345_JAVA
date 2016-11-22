@@ -10,10 +10,9 @@ public class MyApp {
 	
 	public static void main(String[] args){
 		
-		String name = "",
-			   exam = "";
-		int questions = 0, 
-			missed = 0, 
+		String name = "";
+			
+		int missed = 0, 
 			grammar = 0, 
 			content = 0, 
 			numExam = 0, 
@@ -21,9 +20,9 @@ public class MyApp {
 		double score = 0;
 		
 		CourseGrade assignment = new CourseGrade();
-		GradeActivity labGrade = new GradeActivity ();
-		GradeActivity midGrade = new GradeActivity ();
-		GradeActivity essayGrade = new GradeActivity ();
+		//GradeActivity labGrade = new GradeActivity ();
+		//GradeActivity midGrade = new GradeActivity ();
+		//GradeActivity essayGrade = new GradeActivity ();
 		
 		do{
 			name = JOptionPane.showInputDialog("Enter Student Name: ");
@@ -45,15 +44,16 @@ public class MyApp {
 		}
 		} while (assignment.checkSelect(examSelect)== false);
 
-	labGrade.setName(name);
-	midGrade.setName(name);
-	essayGrade.setName(name);
+	assignment.setName(name);
+	//	labGrade.setName(name);
+	//midGrade.setName(name);
+	//essayGrade.setName(name);
 
 	if (examSelect == 1){
 	score = Integer.parseInt(JOptionPane.showInputDialog("Please Enter Lab Score"));
-	labGrade.setScore(score);
-	JOptionPane.showMessageDialog(null,labGrade.getName() + "'s Lab score is " + 
-								 labGrade.getScore() + " land their grade is a " + labGrade.getGrade());
+	assignment.setScore(score);
+	JOptionPane.showMessageDialog(null,assignment.getName() + "'s Lab score is " + 
+								 assignment.getScore() + " land their grade is a " + assignment.getGrade());
 	}
 	if (examSelect == 2){
 		assignment.setQuestions(numExam);
@@ -62,19 +62,20 @@ public class MyApp {
 		assignment.getMissed();
 		assignment.getMScore();
 		assignment.getPointsEach();
-		score = 100 - (assignment.getMScore() - assignment.getPointsEach());
-		midGrade.setScore(score);
-		JOptionPane.showMessageDialog(null,midGrade.getName() + "'s mid-term score is " + 
-				midGrade.getScore() + " and their grade is " + midGrade.getGrade());
+		score = assignment.getMScore();
+		assignment.setScore(score);
+		JOptionPane.showMessageDialog(null,assignment.getName() + "'s mid-term score is " + 
+				assignment.getScore() + " and their grade is " + assignment.getGrade());
 	}
 	if (examSelect == 3){
 		assignment.setGrammar(grammar);
 		assignment.setContent(content);
 		assignment.getGrammar();
 		assignment.getContent();
-		essayGrade.setScore(score);
-		JOptionPane.showMessageDialog(null,essayGrade.getName() + "'s essay score is " + 
-				assignment.getFScore() + " and their grade is " + essayGrade.getGrade());
+		score = assignment.getFScore();
+		assignment.setScore(score);
+		JOptionPane.showMessageDialog(null,assignment.getName() + "'s essay score is " + 
+				assignment.getFScore() + " and their grade is " + assignment.getGrade());
 	}
 	}
 
