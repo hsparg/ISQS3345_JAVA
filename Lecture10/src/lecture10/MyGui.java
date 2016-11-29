@@ -18,9 +18,9 @@ public class MyGui extends JFrame {
 		Container c = getContentPane();
 		c.setLayout(new GridLayout (4,1));
 		//GridLayout myLayout = new Gridlayout(4,1);
-		//c.setLayout (myLayout) ;
+		//c.setLayout (myl=myLayout) ;
 		p1 = new JPanel();
-		p1.setLayout(new GridLayout (1,2));
+		p1.setLayout(new GridLayout (1,3));
 		jlbInput = new JLabel ("Enter a distance in kilometers");
 		jtfInput = new JTextField();
 		p1.add (jlbInput);
@@ -29,11 +29,12 @@ public class MyGui extends JFrame {
 		
 		
 		p2 = new JPanel();
-		p2.setLayout(new GridLayout (1,2));
+		p2.setLayout(new GridLayout (1,3));
 		jrbMiles = new JRadioButton ("Convert to Miles");
 		jrbFeet = new JRadioButton("Convert to Feet");
 		jrbInches = new JRadioButton("Convert to Inches");
-		bg.add (jrbMiles);
+		bg = new ButtonGroup();
+		bg.add(jrbMiles);
 		bg.add(jrbFeet);
 		bg.add(jrbInches);
 
@@ -68,12 +69,12 @@ public class MyGui extends JFrame {
 				out = Double.parseDouble(jtfInput.getText())*0.62;
 			}
 			if (ae.getSource() == jrbFeet){
-				
+					out = Double.parseDouble(jtfInput.getText())*3280;
 			}
 			if (ae.getSource() == jrbInches){
-				
+					out = Double.parseDouble(jtfInput.getText())*39370.079;
 			}
-			jtfOutput.setText(jtfInput.getText() + "kilometers is" + String.valueOf(out));
+			jtfOutput.setText(jtfInput.getText() + " kilometers is " + String.valueOf(out));
 		}
 	}
 	
