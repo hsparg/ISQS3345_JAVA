@@ -9,7 +9,7 @@ public class MyGui extends JFrame{
 	
 	public String output = "";
 	JLabel jlbName, jlbCategory, jlbHours;
-	JTextField jtfName, jtfCategory, jtfHours;
+	JTextField jtfName, jtfCategory, jtfHours, jtfPayRate;
 	JButton jbnCal, jbnClear, jbnExit;
 	JTextArea jtaOutput;
 	
@@ -70,7 +70,24 @@ public class MyGui extends JFrame{
 	public class ButtonHandler implements ActionListener {
 		public void actionPerformed(ActionEvent e){
 			if (e.getSource()==jbnCal){
-				
+				Payroll pay = new Payroll();
+				String m = jtfName.getText();
+				if (pay.checkName(m)==false ){
+					JOptionPane.showMessageDialog(null, "Please enter a valid name!", "Error Message",JOptionPane.ERROR_MESSAGE);
+					
+				}else{
+					pay.setName(m);
+					int n = Integer.parseInt(jtfCategory.getText());
+					int h = Integer.parseInt(jtfHours.getText());
+					pay.setPayRate(n);
+					pay.setHoursWorked(h);
+						if(pay.checkRate(n)==false)
+						{
+							jtaOutput.append("Error \n");
+						}else{
+							jtaOutput.append("Weekly Salary for " + pay.getName() + " is " + pay.getPayRate() + "\n");
+						}
+				}
 			}
 			if (e.getSource()==jbnClear){
 				jtfName.setText("");

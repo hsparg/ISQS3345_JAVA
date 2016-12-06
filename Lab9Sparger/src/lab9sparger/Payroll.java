@@ -8,6 +8,12 @@ public class Payroll {
 	       hoursWorked;
 	
 	
+	public boolean checkName(String na){
+		if(na.length()<1 || na.length()>20 )
+			return false;
+		else 
+			return true;
+	}
 	
 	public void setName(String na)
 	{
