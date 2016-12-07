@@ -74,7 +74,6 @@ public class MyGui extends JFrame{
 				String m = jtfName.getText();
 				if (pay.checkName(m)==false ){
 					JOptionPane.showMessageDialog(null, "Please enter a valid name!", "Error Message",JOptionPane.ERROR_MESSAGE);
-					
 				}else{
 					pay.setName(m);
 					int n = Integer.parseInt(jtfCategory.getText());
@@ -83,7 +82,9 @@ public class MyGui extends JFrame{
 					pay.setHoursWorked(h);
 						if(pay.checkRate(n)==false)
 						{
-							jtaOutput.append("Error \n");
+							jtaOutput.append("Error, please enter a category 1-3. \n");
+						}else if(pay.checkHoursWorked(h)==false){
+							jtaOutput.append("Error, please enter an acceptable range of hours between 0 - 80. \n");
 						}else{
 							jtaOutput.append("Weekly Salary for " + pay.getName() + " is " + pay.getPayRate() + "\n");
 						}
@@ -93,6 +94,7 @@ public class MyGui extends JFrame{
 				jtfName.setText("");
 				jtfCategory.setText("");
 				jtfHours.setText("");
+				jtaOutput.setText("");
 			}
 			if (e.getSource()==jbnExit){
 				System.exit(0);
